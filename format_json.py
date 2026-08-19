@@ -47,10 +47,33 @@ def sort_by_name(pages,sort_by_namae):
         
     save_sort_pages(result,sort_by_namae)
     return result
+def sort_by_facility_name(pages,sort_by_facility_name):
+    result = []
+    facility_name_pages = []
+    
+    for page in pages:
+        facility_name = page.get("metadata", {}).get("facility_name")
+        
+        if not facility_name or not facility_name.get("value"):
+            result.append(page)
+        else:
+            name = facility_name["value"]
+            facility_name_pages.append((name, page))
+    
+    facility_name_pages.sort(key=lambda x: x[0])
+    
+    for name, page in facility_name_pages:
+        result.append(page)
+        
+    save_sort_pages(result,sort_by_facility_name)
+    return result
 
-# page=sort_by_name(pages,sort_by_namae="sorted_by_name.json")
-page2=sort_by_date(pages,sort_by_date="sorted_by_date.json")
+page=sort_by_name(pages,sort_by_namae="sorted_by_name.json")
+print(len(page))
+page2=sort_by_facility_name(pages,sort_by_facility_name="sorted_by_facility_name.json")
 print(len(page2))
+page1=sort_by_date(pages,sort_by_date="sort_by_date.json")
+print(len())
 
 # for idx,pag in enumerate(page,start=1):
 #     print(f"sl_{idx}: {pag}\n")
