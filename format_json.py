@@ -68,12 +68,13 @@ def sort_by_facility_name(pages,sort_by_facility_name):
     save_sort_pages(result,sort_by_facility_name)
     return result
 
-page=sort_by_name(pages,sort_by_namae="sorted_by_name.json")
-print(len(page))
-page2=sort_by_facility_name(pages,sort_by_facility_name="sorted_by_facility_name.json")
-print(len(page2))
-page1=sort_by_date(pages,sort_by_date="sort_by_date.json")
-print(len())
+if __name__=="__main__":
+    page=sort_by_name(pages,sort_by_namae="sorted_by_name.json")
+    print(len(page))
+    page2=sort_by_facility_name(pages,sort_by_facility_name="sorted_by_facility_name.json")
+    print(len(page2))
+    page1=sort_by_date(pages,sort_by_date="sort_by_date.json")
+    print(len(page1))
 
 # for idx,pag in enumerate(page,start=1):
 #     print(f"sl_{idx}: {pag}\n")
