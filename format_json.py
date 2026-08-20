@@ -1,9 +1,9 @@
-from storage import load_json,save_sort_pages
+from storage import save_sort_pages
 from datetime import datetime
 
 file_name = "page_map.json"
 sort_by_date="sort_by_date.json"
-pages = load_json(file_name)
+# pages = load_json(file_name)
 def sort_by_date(pages,sort_by_date):
     results = []
     dated_pages = []
@@ -24,7 +24,8 @@ def sort_by_date(pages,sort_by_date):
     for date_obj, page in dated_pages:
         results.append(page)
     save_sort_pages(results,sort_by_date)
-    return results
+    print("Sorting Complete")
+    return results 
 
     
 def sort_by_name(pages,sort_by_namae):
@@ -46,6 +47,7 @@ def sort_by_name(pages,sort_by_namae):
         result.append(page)
         
     save_sort_pages(result,sort_by_namae)
+    print("Sorting Complete")
     return result
 def sort_by_facility_name(pages,sort_by_facility_name):
     result = []
@@ -66,15 +68,16 @@ def sort_by_facility_name(pages,sort_by_facility_name):
         result.append(page)
         
     save_sort_pages(result,sort_by_facility_name)
+    print("Sorting Complete")
     return result
 
-if __name__=="__main__":
-    page=sort_by_name(pages,sort_by_namae="sorted_by_name.json")
-    print(len(page))
-    page2=sort_by_facility_name(pages,sort_by_facility_name="sorted_by_facility_name.json")
-    print(len(page2))
-    page1=sort_by_date(pages,sort_by_date="sort_by_date.json")
-    print(len(page1))
+# if __name__=="__main__":
+#     page=sort_by_name(pages,sort_by_namae="sorted_by_name.json")
+#     print(len(page))
+#     page2=sort_by_facility_name(pages,sort_by_facility_name="sorted_by_facility_name.json")
+#     print(len(page2))
+#     page1=sort_by_date(pages,sort_by_date="sort_by_date.json")
+#     print(len(page1))
 
 # for idx,pag in enumerate(page,start=1):
 #     print(f"sl_{idx}: {pag}\n")
